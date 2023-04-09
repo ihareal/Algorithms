@@ -4,6 +4,7 @@ import Huge_fibonacci
 import LCM
 import time
 import Binary
+import First_bad_version
 
 if __name__ == '__main__':
     # print(Huge_fibonacci.huge_fibonacci(2015, 3))
@@ -23,6 +24,9 @@ if __name__ == '__main__':
 
     # Binary search
     Binary.test_binary_search()
+
+    # First bad version
+    First_bad_version.firstBadVersion(5)
 
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
