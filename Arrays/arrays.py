@@ -88,7 +88,6 @@ class Solution:
         length_ = len(arr) - 1
         amount_of_duplicates = 0
         for i in range(length_):
-
             if i > length_ - amount_of_duplicates:
                 break
 
