@@ -84,7 +84,7 @@ class Solution:
                 arr[i + possible_dups] = 0
             else:
                 arr[i + possible_dups] = arr[i]
-    def zerosDuplicateMySolution: 
+    # def zerosDuplicateMySolution:
     # def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
 
 sol = Solution()
@@ -99,7 +99,7 @@ sol = Solution()
 # sol.sortedSquares([-4,-1,0,3,10])
 # sol.sortedSquares([-7,-3,2,3,11])
 
-sol.duplicateZerosBestSolution([1,0,2,3,0,4,5,0])
+# sol.duplicateZerosBestSolution([1,0,2,3,0,4,5,0])
 # sol.duplicateZerosBestSolution([8,4,5,0,0,0,0,7])
 # sol.duplicateZerosBestSolution([1,0,2,3,0,0,5,0])
 # sol.duplicateZerosBestSolution([0,0,0,1,0,0,5,7])
