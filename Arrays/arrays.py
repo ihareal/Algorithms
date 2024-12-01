@@ -108,10 +108,34 @@ class Solution:
                 arr[i + amount_of_duplicates] = arr[i]
         print(arr)
     # def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+    def findTwoMaxValues(self, arr: List[int]) -> None:
+        length = len(arr) - 1
+        theMax = 0
+        theSecondMax = 0
+
+        for i in range(length, -1, -1):
+            if arr[i] > theMax:
+                theSecondMax = theMax
+                theMax = arr[i]
+            elif arr[i] > theSecondMax:
+                theSecondMax = arr[i]
+        print('first', theMax)
+        print('second', theSecondMax)
+    def max_pairwise_product(self, numbers):
+        length = len(numbers) - 1
+        max_value = 0
+        max_second_value = 0
+        max_pairwise_product = 0
+        for i in range(length, -1, -1):
+            if numbers[i] > max_value: 
+                max_second_value = max_value
+                max_value = numbers[i]
+            elif numbers[i] > max_second_value:
+                max_second_value = numbers[i]
+        print(max_value * max_second_value)
+
 
 sol = Solution()
-
-
 # sol.findMaxConsecutiveOnes([1,1,0,1,1,1])
 # sol.findMaxConsecutiveOnes([1,1,0,1,0,1])
 
@@ -121,9 +145,11 @@ sol = Solution()
 # sol.sortedSquares([-4,-1,0,3,10])
 # sol.sortedSquares([-7,-3,2,3,11])
 
-sol.zerosDuplicateMySolution([8,4,5,0,0,0,0,7])
+# sol.zerosDuplicateMySolution([8,4,5,0,0,0,0,7])
 # exptected = [8,4,5,0,0,0,0,0]
 
 # sol.duplicateZerosBestSolution([8,4,5,0,0,0,0,7])
 # sol.duplicateZerosBestSolution([1,0,2,3,0,0,5,0])
 # sol.duplicateZerosBestSolution([0,0,0,1,0,0,5,7])
+# sol.findTwoMaxValues([1,10,10,5,5])
+sol.max_pairwise_product([1,10,5,5,5])
