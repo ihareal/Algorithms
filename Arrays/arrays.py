@@ -90,14 +90,12 @@ class Solution:
         for i in range(length_):
             if i > length_ - amount_of_duplicates:
                 break
-
             if arr[i] == 0 and i == length_ - amount_of_duplicates:
                 arr[length_] = 0
                 length_ -= 1
                 break
             if arr[i] == 0:
                 amount_of_duplicates += 1
-
         startFrom = length_ - amount_of_duplicates
         for i in range(startFrom, -1, -1):
             if arr[i] == 0:
@@ -127,12 +125,44 @@ class Solution:
         max_second_value = 0
         max_pairwise_product = 0
         for i in range(length, -1, -1):
-            if numbers[i] > max_value: 
+            if numbers[i] > max_value:
                 max_second_value = max_value
                 max_value = numbers[i]
             elif numbers[i] > max_second_value:
                 max_second_value = numbers[i]
         print(max_value * max_second_value)
+
+    def intersection(self, lst1, lst2):
+        lst3 = [value for value in lst1 if value in lst2]
+        return lst3
+    def intersectUsers(self):
+        lst1 = []
+
+        # external ids from crd db.
+        lst2 = []
+        # data user/tag from bot db.
+        result_dict_2 = {}
+
+        # data from crdf db.
+        result_dict_3 = {}
+        result = sol.intersection(lst1, lst2)
+        result2 = {}
+        print(result)
+        print(len(result))
+        i = 0
+        for i in range(len(result)):
+            user_id = result[i]
+            user_tag = result_dict_2[user_id]
+            user_guid = result_dict_3[user_id]
+
+            # print(user_guid)
+            # print(user_id)
+            print(user_tag)
+            result2[user_id] = user_tag
+        print(len(result2))
+        # result_dict[]
+
+    # Driver Code
 
 
 sol = Solution()
@@ -145,11 +175,14 @@ sol = Solution()
 # sol.sortedSquares([-4,-1,0,3,10])
 # sol.sortedSquares([-7,-3,2,3,11])
 
-# sol.zerosDuplicateMySolution([8,4,5,0,0,0,0,7])
-# exptected = [8,4,5,0,0,0,0,0]
+sol.zerosDuplicateMySolution([1,0,2,3,0,0,5,0])
+# expected = [1,0,0,2,3,0,0,0]
+# expected = [8,4,5,0,0,0,0,0]
 
 # sol.duplicateZerosBestSolution([8,4,5,0,0,0,0,7])
 # sol.duplicateZerosBestSolution([1,0,2,3,0,0,5,0])
 # sol.duplicateZerosBestSolution([0,0,0,1,0,0,5,7])
 # sol.findTwoMaxValues([1,10,10,5,5])
-sol.max_pairwise_product([1,10,5,5,5])
+# external ids from bot.
+
+# sol.max_pairwise_product([1,10,5,5,5])
