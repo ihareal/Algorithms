@@ -163,6 +163,15 @@ class Solution:
         # result_dict[]
 
     # Driver Code
+    def mergeSortedArrays(self, nums1: List[int], m: int, nums2: List[int], n: int):
+        length_ = m + n
+        i = j = q = 0
+        for q in range(length_):
+            if nums1[i] == nums2[j]:
+                nums1[i+1] = nums2[j]
+            elif nums1[i] > nums2[j]:
+                
+
 
 
 sol = Solution()
