@@ -161,16 +161,41 @@ class Solution:
             result2[user_id] = user_tag
         print(len(result2))
         # result_dict[]
-
-    # Driver Code
-    def mergeSortedArrays(self, nums1: List[int], m: int, nums2: List[int], n: int):
+    # Time Complexity O(n + m).
+    # We are performing n + 2⋅m reads and n + 2⋅m writes. Because constants are ignored in Big O notation,this gives us a time complexity of O(n + m).
+    # Space Complexity O (m)
+    def mergeSortedArraysSol2(self, nums1: List[int], m: int, nums2: List[int], n: int):
         length_ = m + n
-        i = j = q = 0
-        for q in range(length_):
-            if nums1[i] == nums2[j]:
-                nums1[i+1] = nums2[j]
-            elif nums1[i] > nums2[j]:
-                
+        p = p1 = p2 = 0
+        nums1_copy = nums1[:m]
+
+        for p in range(length_):
+            # if p2 didn't move after n boundary than
+            # check p1 boundary in case pointer went out of a nums1 array len
+            # if number from nums1 array is less or equal than we insert it in nums1 array
+            # otherwise just take number from second array.
+            if p2 >= n or (p1 < m and nums1_copy[p1] <= nums2[p2]):
+                nums1[p] = nums1_copy[p1]
+                p1 += 1
+            else:
+                nums1[p] = nums2[p2]
+                p2 += 1
+    # Time Complexity O(n+m)
+    # Space Complexity O(1)
+    def mergeSortedArraysSol3(self, nums1: List[int], m: int, nums2: List[int], n: int):
+        p1 = m - 1
+        p2 = n - 1
+        for p in range(n + m - 1, -1, -1):
+            # p2 can never be less than zero
+            if p2 < 0:
+                break
+            # p1 can be less than zero when there is no elements in the nums1 array
+            if p1 >= 0 and nums1[p1] > nums2[p2]:
+                nums1[p] = nums1[p1]
+                p1 -= 1
+            else:
+                nums1[p] = nums2[p2]
+                p2 -= 1
 
 
 
@@ -181,10 +206,9 @@ sol = Solution()
 # sol.findNumbers([12,345,2,6,7896])
 # sol.findNumbers([555,901,482,1771])
 
-# sol.sortedSquares([-4,-1,0,3,10])
-# sol.sortedSquares([-7,-3,2,3,11])
+# sol.sortedSquares([-4,-1,0,3,10])# sol.sortedSquares([-7,-3,2,3,11])
 
-sol.zerosDuplicateMySolution([1,0,2,3,0,0,5,0])
+# sol.zerosDuplicateMySolution([1,0,2,3,0,0,5,0])
 # expected = [1,0,0,2,3,0,0,0]
 # expected = [8,4,5,0,0,0,0,0]
 
@@ -193,5 +217,8 @@ sol.zerosDuplicateMySolution([1,0,2,3,0,0,5,0])
 # sol.duplicateZerosBestSolution([0,0,0,1,0,0,5,7])
 # sol.findTwoMaxValues([1,10,10,5,5])
 # external ids from bot.
+
+# sol.mergeSortedArraysSol2([1, 2, 3, 0, 0, 0], 3, [1, 1, 1], 3)
+sol.mergeSortedArraysSol3([0], 0, [1], 1)
 
 # sol.max_pairwise_product([1,10,5,5,5])
