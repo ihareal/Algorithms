@@ -9,7 +9,7 @@ import First_bad_version
 if __name__ == '__main__':
     # print(Huge_fibonacci.huge_fibonacci(2015, 3))
     # GCD
-    # result = GCD.efficient_gcd(58, 9)
+    result = GCD.efficient_gcd(58, 9)
     # print(result)
 
     # LCM
@@ -23,10 +23,10 @@ if __name__ == '__main__':
     # print(f"Downloaded the tutorial in {toc - tic:5f} seconds")
 
     # Binary search
-    Binary.test_binary_search()
+     # Binary.test_binary_search()
 
     # First bad version
-    First_bad_version.firstBadVersion(5)
+    # First_bad_version.firstBadVersion(5)
 
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
