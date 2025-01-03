@@ -196,7 +196,29 @@ class Solution:
             else:
                 nums1[p] = nums2[p2]
                 p2 -= 1
-
+    def duplicateZerosLastTry(self, arr: List[int]) -> None:
+        length_ = len(arr) - 1
+        shift_amount = 0
+        for i in range(length_):
+            # edge cases
+            # 1st length_ - shift_amount
+            if i > length_ - shift_amount:
+                break
+            if arr[i] == 0 and i == length_ - shift_amount:
+                arr[length_] = 0
+                length_ -= 1
+                break
+            if arr[i] == 0:
+                shift_amount += 1
+        start_from = length_ - shift_amount
+        for j in range(start_from, -1, -1):
+            if arr[j] == 0:
+                arr[j + shift_amount] = 0
+                shift_amount -= 1
+                arr[j + shift_amount] = 0
+            else:
+                arr[j + shift_amount] = arr[j]
+        print(arr)
 
 
 sol = Solution()
@@ -219,6 +241,7 @@ sol = Solution()
 # external ids from bot.
 
 # sol.mergeSortedArraysSol2([1, 2, 3, 0, 0, 0], 3, [1, 1, 1], 3)
-sol.mergeSortedArraysSol3([0], 0, [1], 1)
+# sol.mergeSortedArraysSol3([0], 0, [1], 1)
 
+sol.duplicateZerosLastTry([0,1,7,6,0,2,0,7])
 # sol.max_pairwise_product([1,10,5,5,5])
