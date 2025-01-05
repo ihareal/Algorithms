@@ -219,6 +219,21 @@ class Solution:
             else:
                 arr[j + shift_amount] = arr[j]
         print(arr)
+    def findGCD(self, nums: List[int]) -> None:
+        min = max = nums[0]
+        for i in range(len(nums)):
+            if nums[i] < min:
+                min = nums[i]
+            if nums[i] > max:
+                max = nums[i]
+        print(min)
+        print(max)
+        while min != 0:
+            cache = min
+            min = max % min
+            max = cache
+        print(max)
+        return max
 
 
 sol = Solution()
@@ -243,5 +258,6 @@ sol = Solution()
 # sol.mergeSortedArraysSol2([1, 2, 3, 0, 0, 0], 3, [1, 1, 1], 3)
 # sol.mergeSortedArraysSol3([0], 0, [1], 1)
 
-sol.duplicateZerosLastTry([0,1,7,6,0,2,0,7])
+# sol.duplicateZerosLastTry([0,1,7,6,0,2,0,7])
+sol.findGCD([1,2,3])
 # sol.max_pairwise_product([1,10,5,5,5])

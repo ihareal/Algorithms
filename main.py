@@ -9,7 +9,8 @@ import First_bad_version
 if __name__ == '__main__':
     # print(Huge_fibonacci.huge_fibonacci(2015, 3))
     # GCD
-    result = GCD.efficient_gcd(58, 9)
+    # result = GCD.efficient_gcd(58, 9)
+    GCD.findGCD([1,2])
     # print(result)
 
     # LCM
