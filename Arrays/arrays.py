@@ -236,14 +236,20 @@ class Solution:
         return max
     def isReflected(self, points) -> bool:
         min_x, max_x = float('inf'), float('-inf')
+        points_set = set()
 
-        for x,y in points:
+        for x, y in points:
             min_x = min(min_x, x)
             max_x = max(max_x, x)
-        s = min_x + max_x
-        result = all((s-x, y) in points for x,y in points)
-        return result
+            points_set.add((x, y))
 
+        s = min_x + max_x
+
+        for x, y in points:
+            check = (s-x,y)
+            if (s - x, y) not in points_set:
+                return False
+        return True
 
 sol = Solution()
 # sol.findMaxConsecutiveOnes([1,1,0,1,1,1])
@@ -269,5 +275,5 @@ sol = Solution()
 
 # sol.duplicateZerosLastTry([0,1,7,6,0,2,0,7])
 # sol.findGCD([1,2,3])
-sol.isReflected({(-1, 1), (1, 1), (3, 4)})
+sol.isReflected({(-3, 1), (1, 1)})
 # sol.max_pairwise_product([1,10,5,5,5])
