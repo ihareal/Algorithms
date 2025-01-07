@@ -234,6 +234,15 @@ class Solution:
             max = cache
         print(max)
         return max
+    def isReflected(self, points) -> bool:
+        min_x, max_x = float('inf'), float('-inf')
+
+        for x,y in points:
+            min_x = min(min_x, x)
+            max_x = max(max_x, x)
+        s = min_x + max_x
+        result = all((s-x, y) in points for x,y in points)
+        return result
 
 
 sol = Solution()
@@ -259,5 +268,6 @@ sol = Solution()
 # sol.mergeSortedArraysSol3([0], 0, [1], 1)
 
 # sol.duplicateZerosLastTry([0,1,7,6,0,2,0,7])
-sol.findGCD([1,2,3])
+# sol.findGCD([1,2,3])
+sol.isReflected({(-1, 1), (1, 1), (3, 4)})
 # sol.max_pairwise_product([1,10,5,5,5])
