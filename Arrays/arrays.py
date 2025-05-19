@@ -250,6 +250,32 @@ class Solution:
             if (s - x, y) not in points_set:
                 return False
         return True
+    def isSubsequence(self, s: str, t: str) -> bool:
+            if len(s) > len(t):
+                return False
+            if len(s) == 0:
+                return True
+            j = 0
+            for i in t:
+                if s[j] == i:
+                    j += 1
+                if j == len(s):
+                    return True
+            return False
+    def decodeString(self, s: str) -> List[str]:
+        res = []
+        i = 0
+
+        while i < len(s):
+            j = i
+            while s[j] != '#':
+                j +=1
+            length = int(s[i:j])
+            i = j + 1
+            j = i + length
+            res.append(s[i:j])
+            i = j
+        return res
 
 sol = Solution()
 # sol.findMaxConsecutiveOnes([1,1,0,1,1,1])
@@ -275,5 +301,8 @@ sol = Solution()
 
 # sol.duplicateZerosLastTry([0,1,7,6,0,2,0,7])
 # sol.findGCD([1,2,3])
-sol.isReflected({(-3, 1), (1, 1)})
+# sol.isReflected({(-3, 1), (1, 1)})
+# sol.isSubsequence('abc', 'aсhbgd')
 # sol.max_pairwise_product([1,10,5,5,5])
+
+sol.decodeString('#5hello#4tree')
